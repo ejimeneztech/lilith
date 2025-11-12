@@ -12,13 +12,6 @@ public class PlayerDeath : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            //Trigger camera shake
-            ShakeCam shakeCam = Camera.main.GetComponent<ShakeCam>();
-            if (shakeCam != null)
-            {
-                StartCoroutine(shakeCam.Shake(0.3f, 0.5f));
-            }
-
             //Instantiate blood particle effect at player's position
             Instantiate(bloodParticleEffect, transform.position, Quaternion.identity);
 
