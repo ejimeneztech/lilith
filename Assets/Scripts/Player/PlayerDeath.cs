@@ -1,3 +1,4 @@
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
@@ -6,7 +7,7 @@ public class PlayerDeath : MonoBehaviour
     public GameObject[] gorePrefabs;
 
     public float duration = 0.3f;
-    public float magnitude = 0.5f;  
+    public float magnitude = 0.5f; 
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -37,6 +38,7 @@ public class PlayerDeath : MonoBehaviour
                     //Apply random force to each gore piece
                     Vector2 randomForce = Random.insideUnitCircle * Random.Range(100f, 300f);
                     goreRb.AddForce(randomForce);
+                    goreRb.linearDamping = 3f;
                 }
                 
             }

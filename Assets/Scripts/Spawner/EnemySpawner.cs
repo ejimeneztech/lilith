@@ -7,7 +7,9 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public int enemyCount = 5;
 
-    [Header("Spawn Area Settings")]
+    private int enemiesAlive = 0;
+
+    [Header("Spawn Area Settings")] 
     public Vector3 spawnAreaMin = new Vector3(-5, -5, 0);
     public Vector3 spawnAreaMax = new Vector3(5, 5, 0);
     public float spawnRadius = 10f;
@@ -16,14 +18,27 @@ public class EnemySpawner : MonoBehaviour
     public float minSpawnInterval = 15f;
     public float maxSpawnInterval = 30f;
 
+    [Header("Enemy Lifetime")]
+    public float minEnemyLifetime = 20f;
+    public float maxEnemyLifetime = 40f;
+
+
     [Header("Player Prefab")]
     public Transform playerPrefab;
     private bool isSpawning = false;
     private Coroutine spawnRoutine;
 
+    [Header("Screen Color Prefab")]
+    public GameObject screenColorPrefab;
 
-
-
+    void Start()
+    {
+        
+        if (screenColorPrefab != null)
+        {
+            screenColorPrefab.SetActive(false);
+        }
+    }
 
     void Update()
     {
@@ -83,12 +98,15 @@ public class EnemySpawner : MonoBehaviour
     {
         while (isSpawning)
         {
+            
             float waitTime = Random.Range(minSpawnInterval, maxSpawnInterval);
             yield return new WaitForSeconds(waitTime);
             SpawnEnemy();
 
+
         }
     }
+
 
 
     void SpawnEnemy()
@@ -98,9 +116,37 @@ public class EnemySpawner : MonoBehaviour
             float randomX = Random.Range(spawnAreaMin.x, spawnAreaMax.x);
             float randomY = Random.Range(spawnAreaMin.y, spawnAreaMax.y);
             Vector3 spawnPosition = transform.position + new Vector3(randomX, randomY, 0);
-            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+
+            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+
+            //set a random lifetime for the enemy
+            enemiesAlive++;
+            float lifetime = Random.Range(minEnemyLifetime, maxEnemyLifetime);
+            StartCoroutine(DestroyEnemyAfterTime(enemy, lifetime));
+            if(screenColorPrefab != null)
+            {
+                screenColorPrefab.SetActive(true);
+            }
+            
+            
+
         }
 
+        
+
+    }
+
+
+    IEnumerator DestroyEnemyAfterTime(GameObject enemy, float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(enemy);
+        enemiesAlive--;
+
+        if(enemiesAlive <= 0 && screenColorPrefab != null)
+        {
+            screenColorPrefab.SetActive(false);
+        }
     }
     
 
