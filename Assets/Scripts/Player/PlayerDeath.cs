@@ -1,13 +1,22 @@
-using UnityEditor.Callbacks;
+using System.Collections;
 using UnityEngine;
+
 
 public class PlayerDeath : MonoBehaviour
 {
     public GameObject bloodParticleEffect;
     public GameObject[] gorePrefabs;
 
+    public GameObject gameOverUI;
+
+
     public float duration = 0.3f;
     public float magnitude = 0.5f; 
+
+    void Start()
+    {
+        gameOverUI.SetActive(false);
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -16,8 +25,12 @@ public class PlayerDeath : MonoBehaviour
             //Instantiate blood particle effect at player's position
             Instantiate(bloodParticleEffect, transform.position, Quaternion.identity);
 
+        
             //Destroy player object
             Destroy(gameObject);
+            gameOverUI.SetActive(true);
+            
+            
 
             for (int i = 0; i < gorePrefabs.Length; i++)
             {
@@ -40,10 +53,10 @@ public class PlayerDeath : MonoBehaviour
                     goreRb.AddForce(randomForce);
                     goreRb.linearDamping = 3f;
                 }
-                
             }
 
             
         }
     }
+
 }
