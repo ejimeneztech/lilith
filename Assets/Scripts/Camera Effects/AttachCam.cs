@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class AttachCamTint : MonoBehaviour
+public class AttachCam : MonoBehaviour
 {
-    void Start()
+   void Start()
     {
         Camera cam = Camera.main;
         Canvas canvas = GetComponent<Canvas>();
