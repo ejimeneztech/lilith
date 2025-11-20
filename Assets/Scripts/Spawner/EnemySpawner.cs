@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    // sends (timeRemaining, totalTime)
+    public event System.Action<float, float> OnCountdownUpdated; 
+
+
     [Header("Enemy Settings")]
     public GameObject enemyPrefab;
     public int enemyCount = 5;
@@ -61,6 +65,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (isSpawning) return;
 
+        UIStatus.Instance.SetSpawner(this); // Set the spawner reference in UIStatus    
         isSpawning = true;
         spawnRoutine = StartCoroutine(SpawnWave());
        
@@ -68,6 +73,7 @@ public class EnemySpawner : MonoBehaviour
     public void StopSpawning()
     {
         if (!isSpawning) return;
+        UIStatus.Instance.ClearSpawner();   // Clear the spawner reference in UIStatus
         isSpawning = false;
 
         if (spawnRoutine != null)
@@ -100,6 +106,7 @@ public class EnemySpawner : MonoBehaviour
         {
             
             float waitTime = Random.Range(minSpawnInterval, maxSpawnInterval);
+            StartCoroutine(CountDown(waitTime));
             yield return new WaitForSeconds(waitTime);
             SpawnEnemy();
 
@@ -147,6 +154,23 @@ public class EnemySpawner : MonoBehaviour
         {
             screenColorPrefab.SetActive(false);
         }
+    }
+
+
+    IEnumerator CountDown(float totalTime)
+    {
+        float timeRemaining = totalTime;
+        while (timeRemaining > 0 && isSpawning)
+        {
+            
+            Debug.Log($"Time Remaining: {timeRemaining:F2}");
+            OnCountdownUpdated?.Invoke(timeRemaining, totalTime);
+            timeRemaining -= Time.deltaTime;
+            yield return null;
+            
+        }
+
+        OnCountdownUpdated?.Invoke(0f, totalTime);
     }
     
 
