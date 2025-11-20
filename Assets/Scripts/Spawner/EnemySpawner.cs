@@ -149,10 +149,13 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(time);
         Destroy(enemy);
         enemiesAlive--;
+        
 
-        if(enemiesAlive <= 0 && screenColorPrefab != null)
+        if (enemiesAlive <= 0 && screenColorPrefab != null)
         {
             screenColorPrefab.SetActive(false);
+            UIStatus.Instance.ResetDanger(); // Reset danger state in UIStatus
+           
         }
     }
 

@@ -15,6 +15,8 @@ public class UIStatus : MonoBehaviour
 
     private EnemySpawner currentSpawner;
 
+    private bool dangerActive = false;
+
     void Awake()
     {
        Instance = this;
@@ -43,17 +45,25 @@ public class UIStatus : MonoBehaviour
             currentSpawner.OnCountdownUpdated -= UpdateStatusUI;
             currentSpawner = null;
             statusUI.sprite = normalSprite;
+            dangerActive = false;
         }
     }
 
 
- 
+    
 
     void UpdateStatusUI(float timeRemaining, float totalTime)
     {
         float ratio = timeRemaining / totalTime;
 
-        if (ratio >= 0.9f)
+        if (dangerActive)
+        {
+            statusUI.sprite = dangerSprite;
+            return;
+
+        }
+
+        if (ratio >= 0.8f)
         {
             statusUI.sprite = normalSprite;
         }
@@ -69,6 +79,12 @@ public class UIStatus : MonoBehaviour
         else
         {
             statusUI.sprite = dangerSprite;
+            dangerActive = true;
         }
+    }
+
+    public void ResetDanger()
+    {
+        dangerActive = false;
     }
 }
