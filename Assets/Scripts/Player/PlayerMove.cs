@@ -15,6 +15,15 @@ public class PlayerMove : MonoBehaviour
     //animation
     private Animator animator;
 
+    public AudioSource footstepAudioSource;
+    public AudioClip footstepClip;
+
+    private float stepTimer = 0f;
+    public float stepDelay = 0.4f; // time between footsteps
+
+
+
+
 
    
 
@@ -47,6 +56,21 @@ public class PlayerMove : MonoBehaviour
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + moveInput * speed * Time.fixedDeltaTime);
+        
+        //Handle footstep sounds
+        if (moveInput != Vector2.zero)
+        {
+            stepTimer += Time.fixedDeltaTime;
+            if (stepTimer >= stepDelay)
+            {
+                footstepAudioSource.PlayOneShot(footstepClip);
+                stepTimer = 0f;
+            }
+        }
+        else
+        {
+            stepTimer = stepDelay; //reset timer when not moving
+        }
 
         //update animator parameters
         animator.SetFloat("moveY", moveInput.y);

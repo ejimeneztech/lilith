@@ -9,6 +9,9 @@ public class PlayerDeath : MonoBehaviour
 
     public GameObject gameOverUI;
 
+    public AudioSource deathAudioSource;
+    public AudioClip deathClip;
+
 
     public float duration = 0.3f;
     public float magnitude = 0.5f; 
@@ -24,10 +27,11 @@ public class PlayerDeath : MonoBehaviour
         {
             //Instantiate blood particle effect at player's position
             Instantiate(bloodParticleEffect, transform.position, Quaternion.identity);
+            deathAudioSource.PlayOneShot(deathClip);
 
         
             //Destroy player object
-            Destroy(gameObject);
+            Destroy(gameObject, deathClip.length);
             gameOverUI.SetActive(true);
             
             
@@ -43,6 +47,7 @@ public class PlayerDeath : MonoBehaviour
 
                 //Instantiate gore piece
                 GameObject gore = Instantiate(gorePrefabs[i], spawnPos, Quaternion.identity);
+                
                 
                 //Apply physics to gore piece
                 Rigidbody2D goreRb = gore.GetComponent<Rigidbody2D>();
