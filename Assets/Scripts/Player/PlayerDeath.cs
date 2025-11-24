@@ -12,9 +12,13 @@ public class PlayerDeath : MonoBehaviour
     public AudioSource deathAudioSource;
     public AudioClip deathClip;
 
+    public SpriteRenderer playerSpriteRenderer;
+    public Animator playerAnimator; 
 
     public float duration = 0.3f;
-    public float magnitude = 0.5f; 
+    public float magnitude = 0.5f;
+    
+    private bool isDead = false;
 
     void Start()
     {
@@ -23,9 +27,14 @@ public class PlayerDeath : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (isDead) return;
+
+        if (collision.gameObject.CompareTag("Enemy"))
         {
+            isDead = true;
             //Instantiate blood particle effect at player's position
+            playerSpriteRenderer.sprite = null;
+            playerAnimator.enabled = false;
             Instantiate(bloodParticleEffect, transform.position, Quaternion.identity);
             deathAudioSource.PlayOneShot(deathClip);
 
