@@ -7,6 +7,7 @@ public class GameSceneManager : MonoBehaviour
 
     public string startScreen = "StartScreen";
     public string mainGame = "Living Room";
+    public string introScene = "Intro";
 
 
     void Awake()
@@ -26,7 +27,7 @@ public class GameSceneManager : MonoBehaviour
     
     public void StartGame()
     {
-        SceneManager.LoadScene(mainGame);
+        SceneManager.LoadScene(introScene);
     }
 
     

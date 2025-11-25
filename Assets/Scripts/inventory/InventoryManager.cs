@@ -24,6 +24,22 @@ public class InventoryManager : MonoBehaviour
     [Header("Sub Menu")]
     public GameObject subMenuPanel;
 
+    public static InventoryManager instance;
+
+    void Awake()
+    {
+        //Singleton pattern
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
     void Start()
     {
@@ -34,7 +50,7 @@ public class InventoryManager : MonoBehaviour
         subMenuPanel.SetActive(false);
 
         //Generate slots automatically
-        for (int i = 0; i <= addSlots; i++)
+        for (int i = 0; i < addSlots; i++)
         {
             // Add the Image component of the new slot to the list
             GameObject newSlot = Instantiate(slotPrefab, slotParent);
