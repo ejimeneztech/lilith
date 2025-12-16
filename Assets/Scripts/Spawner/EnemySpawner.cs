@@ -166,7 +166,7 @@ public class EnemySpawner : MonoBehaviour
         while (timeRemaining > 0 && isSpawning)
         {
             
-            Debug.Log($"Time Remaining: {timeRemaining:F2}");
+            
             OnCountdownUpdated?.Invoke(timeRemaining, totalTime);
             timeRemaining -= Time.deltaTime;
             yield return null;

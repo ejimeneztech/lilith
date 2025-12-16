@@ -70,7 +70,7 @@ public class UIStatus : MonoBehaviour
         else if (ratio >= 0.6f)
         {
             statusUI.sprite = mediumSprite;
-            Debug.Log("Medium Status");
+        
         }
         else if (ratio >= 0.1f)
         {
