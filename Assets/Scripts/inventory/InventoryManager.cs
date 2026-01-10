@@ -24,6 +24,9 @@ public class InventoryManager : MonoBehaviour
     [Header("Sub Menu")]
     public GameObject subMenuPanel;
 
+    [Header("Items")]
+    public Item[] slotItems;
+
     public static InventoryManager instance;
 
     void Awake()
@@ -43,6 +46,8 @@ public class InventoryManager : MonoBehaviour
 
     void Start()
     {
+        slotItems = new Item[addSlots];
+
         //runtime starts clean
         inventorySlots = new List<Image>();
 
@@ -141,6 +146,11 @@ public class InventoryManager : MonoBehaviour
             Debug.LogWarning($"Invalid slot index: {slotIndex}");
             return;
         }
+
+        Item item = slotItems[slotIndex];
+        if (item == null) return;
+
+        item.Use();
 
         Debug.Log($"Using item in slot {slotIndex}");
         inventorySlots[slotIndex].sprite = emptySlotSprite;

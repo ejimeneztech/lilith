@@ -30,7 +30,10 @@ public class PlayerMove : MonoBehaviour
     void Awake()
     {
         input = new InputSystem_Actions();
+        
         rb = GetComponent<Rigidbody2D>();
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation; // Prevent rotation when bumping into objects
+
         animator = GetComponent<Animator>();
 
         //Listen for movement input
