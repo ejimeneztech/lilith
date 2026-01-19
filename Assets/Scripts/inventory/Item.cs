@@ -8,5 +8,5 @@ public abstract class Item : ScriptableObject
 
     public int maxStack = 1;
     
-    public abstract void Use();
+    public abstract void Use(int slotIndex);
 }

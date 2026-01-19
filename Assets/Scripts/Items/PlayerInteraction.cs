@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
-   public static bool canUseItems;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,21 +10,16 @@ public class PlayerInteraction : MonoBehaviour
         if(door !=null)
         {
             Debug.Log("Near door: " + other.gameObject.name);
+            InventoryManager.instance.inventoryScreen.SetActive(true);
         }
         
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        if (!context.performed) return;
-
-        canUseItems = true;
-        InventoryManager.instance.inventoryScreen.SetActive(true);
-    }
+   
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        
-        canUseItems = false;
+        InventoryManager.instance.inventoryScreen.SetActive(false);
+
     }
 }

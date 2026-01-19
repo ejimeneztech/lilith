@@ -399,6 +399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c74addd8a70143768f61d4ea0709d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorId: kitchen
+  isOpen: 0
 --- !u!1 &107927124
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,37 +1,30 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 
 public class InventoryManager : MonoBehaviour
 {
-    [Header("Slot Settings")]
+    [Header("Slots")]
     public GameObject slotPrefab;
-    public Transform slotParent; // Parent object to hold slots
-    public int addSlots = 3; // Total slots in inventory
+    public Transform slotParent;
+    public int addSlots = 3;
+    public Sprite emptySlotSprite;
 
-    [Header("UI Slots")]
-    private List<Image> inventorySlots = new List<Image>(); //set to private to ensure the generated slots are run-time only (not using the original prefab)
-    public Sprite emptySlotSprite; // Placeholder for empty
-
-    public int selectedSlotIndex = -1;
-
-    [Header("Inventory Screen")]
+    [Header("UI")]
     public GameObject inventoryScreen;
-    private bool isOpen = false; // Inventory Grid State
-
-    [Header("Sub Menu")]
     public GameObject subMenuPanel;
 
     [Header("Items")]
-    public Item[] slotItems;
+    public Item[] slotItems; // logical storage
+
+    private List<Image> inventorySlots = new List<Image>();
+    public int selectedSlotIndex = -1;
+    private bool isOpen = false;
 
     public static InventoryManager instance;
 
     void Awake()
     {
-        //Singleton pattern
         if (instance == null)
         {
             instance = this;
@@ -43,74 +36,42 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-
     void Start()
     {
         slotItems = new Item[addSlots];
-
-        //runtime starts clean
         inventorySlots = new List<Image>();
-
         inventoryScreen.SetActive(isOpen);
         subMenuPanel.SetActive(false);
 
-        //Generate slots automatically
         for (int i = 0; i < addSlots; i++)
         {
-            // Add the Image component of the new slot to the list
             GameObject newSlot = Instantiate(slotPrefab, slotParent);
-
             Image slotImage = newSlot.GetComponent<Image>();
             if (slotImage == null) slotImage = newSlot.AddComponent<Image>();
-
             slotImage.sprite = emptySlotSprite;
             slotImage.color = Color.white;
-            inventorySlots.Add(newSlot.GetComponent<Image>());
+            inventorySlots.Add(slotImage);
 
-            //add index to slot UI script
-            InventorySlotUI slotUI = newSlot.GetComponent<InventorySlotUI>();
-            if (slotUI != null)
-            {
-                slotUI.slotIndex = i;
-                //slotUI.subMenu = subMenuPanel; 
-            }
-
-
-
-            //Add click listener to button
+            int capturedIndex = i;
             Button slotButton = newSlot.GetComponent<Button>();
             if (slotButton != null)
             {
-
-                int capturedIndex = i; // Capture the current index for the lambda to avoid closing issue
-
                 slotButton.onClick.AddListener(() => OnSlotClicked(capturedIndex));
             }
-
-
-
-
         }
-        
-            //Add Click Listener to sub menu use button
-            Button useButton = subMenuPanel.transform.Find("Use").GetComponent<Button>();
-            useButton.onClick.AddListener(() => UseItem(selectedSlotIndex));
-            
-            //Add Click Listener to Discard button
-            Button discardButton = subMenuPanel.transform.Find("Discard").GetComponent<Button>();
-            discardButton.onClick.AddListener(() => DiscardItem(selectedSlotIndex));
-            
-            
-            //Add Click Listener to sub menu close button
-            Button closeButton = subMenuPanel.transform.Find("Close").GetComponent<Button>();
-            closeButton.onClick.AddListener(() => Close());
-    }
 
+        // Submenu buttons
+        subMenuPanel.transform.Find("Use").GetComponent<Button>()
+            .onClick.AddListener(() => UseItem(selectedSlotIndex));
+        subMenuPanel.transform.Find("Discard").GetComponent<Button>()
+            .onClick.AddListener(() => DiscardItem(selectedSlotIndex));
+        subMenuPanel.transform.Find("Close").GetComponent<Button>()
+            .onClick.AddListener(() => Close());
+    }
 
     void Update()
     {
-        // Toggle inventory screen
-        if (Keyboard.current.iKey.wasPressedThisFrame)
+        if (UnityEngine.InputSystem.Keyboard.current.iKey.wasPressedThisFrame)
         {
             isOpen = !isOpen;
             inventoryScreen.SetActive(isOpen);
@@ -119,73 +80,48 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(Item item)
     {
-
-        //Add item icon to first empty slot
-        foreach (Image slot in inventorySlots)
+        for (int i = 0; i < inventorySlots.Count; i++)
         {
-            Debug.Log("Checking slot: " + slot.name + ", current sprite: " + slot.sprite);
-            if (slot.sprite == emptySlotSprite || slot.sprite == null) // Slot is empty
+            if (slotItems[i] == null)
             {
-                slot.sprite = item.icon;
-                slot.color = Color.white;
-                Debug.Log($"Placed {item.name}in slot: {slot.name}!");
-                return; // Exit after adding the item
+                slotItems[i] = item;
+                inventorySlots[i].sprite = item.icon;
+                inventorySlots[i].color = Color.white;
+                Debug.Log($"Placed {item.name} in slot {i}");
+                return;
             }
         }
         Debug.Log("Inventory Full! Cannot add item: " + item.name);
     }
 
-
-
-    //Use Item
     public void UseItem(int slotIndex)
     {
-        // Basic safety check to prevent errors. Also, check if item can be used.
-        if (slotIndex < 0 || slotIndex >= inventorySlots.Count)
-        {
-            Debug.LogWarning($"Invalid slot index: {slotIndex}");
-            return;
-        }
+        if (slotIndex < 0 || slotIndex >= inventorySlots.Count) return;
 
         Item item = slotItems[slotIndex];
         if (item == null) return;
 
-        item.Use();
-
-        Debug.Log($"Using item in slot {slotIndex}");
+        item.Use(slotIndex); // polymorphic call
+        slotItems[slotIndex] = null;
         inventorySlots[slotIndex].sprite = emptySlotSprite;
         subMenuPanel.SetActive(false);
-
     }
 
     public void DiscardItem(int slotIndex)
     {
-        Debug.Log($"Discarding item in slot {slotIndex}");
-        inventorySlots[slotIndex].sprite = emptySlotSprite; 
+        if (slotIndex < 0 || slotIndex >= slotItems.Length) return;
+
+        slotItems[slotIndex] = null;
+        inventorySlots[slotIndex].sprite = emptySlotSprite;
+        Debug.Log($"Discarded item in slot {slotIndex}");
     }
 
-    ///Close Sub Menu
-    public void Close()
-    {
-        subMenuPanel.SetActive(false);
-    }
+    public void Close() => subMenuPanel.SetActive(false);
 
-    //Move Item
-    public void MoveItem()
-    {
-        Debug.Log("Move item - not implemented yet");
-    }
-    
     public void OnSlotClicked(int slotIndex)
     {
         selectedSlotIndex = slotIndex;
-
         subMenuPanel.SetActive(true);
-        
         Debug.Log($"Slot {slotIndex} clicked.");
     }
-
-
-
-
 }
