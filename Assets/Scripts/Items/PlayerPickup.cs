@@ -28,12 +28,5 @@ public class PlayerPickup : MonoBehaviour
         inventoryManager.AddItem(itemData.item);
         Destroy(other.gameObject);
 
-        // Debug.Log("Triggered with: " + other.name);
-        // ItemData itemData = other.GetComponent<ItemData>();
-        // if (itemData != null)
-        // {
-        //     Debug.Log("Picked up: " + itemData.item.itemName);
-        // }
-
     } 
 }

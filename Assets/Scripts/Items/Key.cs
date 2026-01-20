@@ -8,23 +8,26 @@ public class Key : Item
     public override void Use(int slotIndex)
     {
         Debug.Log("Using key: " + itemName);
-        //Check if door is assigned and if it is the correct door to unlock
-        if (DoorContext.currentDoor == null)
+        
+        // Get the door from PlayerInteraction
+        Door nearbyDoor = PlayerInteraction.instance.GetNearbyDoor();
+        
+        if (nearbyDoor == null)
         {
-            Debug.Log("No door in context to unlock.");
+            Debug.Log("No door nearby to unlock.");
             return;
         }
         
-        if(DoorContext.currentDoor.doorId == targetDoorId)
+        if (nearbyDoor.doorId == targetDoorId)
         {
-            DoorContext.currentDoor.OpenDoor();
+            nearbyDoor.OpenDoor();
             Debug.Log("Unlocked door with key: " + itemName);
             InventoryManager.instance.DiscardItem(slotIndex);
             InventoryManager.instance.inventoryScreen.SetActive(false);       
         }
         else
         {
-            Debug.Log("No door assigned to this key.");
+            Debug.Log("Wrong key for this door!");
         }
     }
 }
