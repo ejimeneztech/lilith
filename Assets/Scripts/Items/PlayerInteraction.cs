@@ -10,6 +10,7 @@ public class PlayerInteraction : MonoBehaviour
     
     private Door nearbyDoor;
 
+
     void Awake()
     {
         instance = this;

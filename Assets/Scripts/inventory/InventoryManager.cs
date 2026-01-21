@@ -76,6 +76,11 @@ public class InventoryManager : MonoBehaviour
             isOpen = !isOpen;
             inventoryScreen.SetActive(isOpen);
         }
+        // Close submenu if inventory is closed
+        if (!isOpen && subMenuPanel.activeSelf)
+        {
+            subMenuPanel.SetActive(false);
+        }
     }
 
     public void AddItem(Item item)
@@ -102,9 +107,6 @@ public class InventoryManager : MonoBehaviour
         if (item == null) return;
 
         item.Use(slotIndex); // polymorphic call
-        slotItems[slotIndex] = null;
-        inventorySlots[slotIndex].sprite = emptySlotSprite;
-        subMenuPanel.SetActive(false);
     }
 
     public void DiscardItem(int slotIndex)

@@ -4,7 +4,6 @@ using UnityEngine;
 public class Key : Item
 {
     public string targetDoorId;
-    
     public override void Use(int slotIndex)
     {
         Debug.Log("Using key: " + itemName);
@@ -17,7 +16,7 @@ public class Key : Item
             Debug.Log("No door nearby to unlock.");
             return;
         }
-        
+
         if (nearbyDoor.doorId == targetDoorId)
         {
             nearbyDoor.OpenDoor();
