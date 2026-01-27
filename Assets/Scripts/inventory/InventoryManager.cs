@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-
+using TMPro;
+using Unity.VisualScripting;
 public class InventoryManager : MonoBehaviour
 {
     [Header("Slots")]
@@ -13,6 +14,8 @@ public class InventoryManager : MonoBehaviour
     [Header("UI")]
     public GameObject inventoryScreen;
     public GameObject subMenuPanel;
+
+    public TextMeshProUGUI descriptionText;
 
     [Header("Items")]
     public Item[] slotItems; // logical storage
@@ -42,6 +45,8 @@ public class InventoryManager : MonoBehaviour
         inventorySlots = new List<Image>();
         inventoryScreen.SetActive(isOpen);
         subMenuPanel.SetActive(false);
+        descriptionText.gameObject.SetActive(false);
+        
 
         for (int i = 0; i < addSlots; i++)
         {
@@ -80,6 +85,7 @@ public class InventoryManager : MonoBehaviour
         if (!isOpen && subMenuPanel.activeSelf)
         {
             subMenuPanel.SetActive(false);
+            descriptionText.gameObject.SetActive(false);
         }
     }
 
@@ -124,6 +130,16 @@ public class InventoryManager : MonoBehaviour
     {
         selectedSlotIndex = slotIndex;
         subMenuPanel.SetActive(true);
-        Debug.Log($"Slot {slotIndex} clicked.");
+
+        if(slotItems[slotIndex] != null)
+        {
+            descriptionText.gameObject.SetActive(true);
+            descriptionText.text = slotItems[slotIndex].itemName;
+        }
+        else
+        {
+            Debug.Log("Description Text is not assigned in InventoryManager.");
+            descriptionText.gameObject.SetActive(false);
+        }
     }
 }

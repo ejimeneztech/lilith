@@ -62,11 +62,11 @@ public class PlayerInteraction : MonoBehaviour
             nearbyDoor = null;
             Debug.Log("Left door area");
             
-            // Close inventory if it's open and player walks away
-            if (InventoryManager.instance.inventoryScreen.activeSelf)
-            {
-                InventoryManager.instance.inventoryScreen.SetActive(false);
-            }
+            // // Close inventory if it's open and player walks away
+            // if (InventoryManager.instance.inventoryScreen.activeSelf)
+            // {
+            //     InventoryManager.instance.inventoryScreen.SetActive(false);
+            // }
         }
     }
 }
