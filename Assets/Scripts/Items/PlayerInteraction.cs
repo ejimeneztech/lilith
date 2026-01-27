@@ -38,6 +38,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("Interacting with door: " + nearbyDoor.doorId);
             InventoryManager.instance.inventoryScreen.SetActive(true);
+            InventoryManager.instance.isOpen = true;
         }
     }
 
@@ -61,12 +62,6 @@ public class PlayerInteraction : MonoBehaviour
         {
             nearbyDoor = null;
             Debug.Log("Left door area");
-            
-            // // Close inventory if it's open and player walks away
-            // if (InventoryManager.instance.inventoryScreen.activeSelf)
-            // {
-            //     InventoryManager.instance.inventoryScreen.SetActive(false);
-            // }
         }
     }
 }

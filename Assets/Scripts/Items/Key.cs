@@ -21,8 +21,8 @@ public class Key : Item
         {
             nearbyDoor.OpenDoor();
             Debug.Log("Unlocked door with key: " + itemName);
-            InventoryManager.instance.DiscardItem(slotIndex);
-            InventoryManager.instance.inventoryScreen.SetActive(false);       
+            // InventoryManager.instance.DiscardItem(slotIndex);
+            // InventoryManager.instance.inventoryScreen.SetActive(false);       
         }
         else
         {

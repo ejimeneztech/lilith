@@ -22,7 +22,7 @@ public class InventoryManager : MonoBehaviour
 
     private List<Image> inventorySlots = new List<Image>();
     public int selectedSlotIndex = -1;
-    private bool isOpen = false;
+    public bool isOpen = false;
 
     public static InventoryManager instance;
 
@@ -113,6 +113,8 @@ public class InventoryManager : MonoBehaviour
         if (item == null) return;
 
         item.Use(slotIndex); // polymorphic call
+        DiscardItem(slotIndex);
+        
     }
 
     public void DiscardItem(int slotIndex)
@@ -121,10 +123,17 @@ public class InventoryManager : MonoBehaviour
 
         slotItems[slotIndex] = null;
         inventorySlots[slotIndex].sprite = emptySlotSprite;
+        subMenuPanel.SetActive(false);
+        descriptionText.gameObject.SetActive(false);
         Debug.Log($"Discarded item in slot {slotIndex}");
     }
 
-    public void Close() => subMenuPanel.SetActive(false);
+    public void Close()
+    {
+        subMenuPanel.SetActive(false);
+        descriptionText.gameObject.SetActive(false);
+    }
+    
 
     public void OnSlotClicked(int slotIndex)
     {
