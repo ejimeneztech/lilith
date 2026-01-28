@@ -112,8 +112,15 @@ public class InventoryManager : MonoBehaviour
         Item item = slotItems[slotIndex];
         if (item == null) return;
 
-        item.Use(slotIndex); // polymorphic call
-        DiscardItem(slotIndex);
+        bool success = item.Use(slotIndex); // polymorphic call
+        
+        if (success)
+        {
+            DiscardItem(slotIndex);
+            inventoryScreen.SetActive(false);
+            isOpen = false;
+        }
+        
         
     }
 
@@ -149,6 +156,14 @@ public class InventoryManager : MonoBehaviour
         {
             Debug.Log("Description Text is not assigned in InventoryManager.");
             descriptionText.gameObject.SetActive(false);
+        }
+    }
+
+    public void ClearInventory()
+    {
+        for (int i = 0; i < slotItems.Length; i++)
+        {
+            DiscardItem(i);
         }
     }
 }

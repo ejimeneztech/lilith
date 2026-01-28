@@ -4,7 +4,7 @@ public class PlayerPickup : MonoBehaviour
 {
 
 
-    public InventoryManager inventoryManager;
+    //public InventoryManager inventoryManager;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("PickUp"))
@@ -19,13 +19,13 @@ public class PlayerPickup : MonoBehaviour
 
         Debug.Log("Picked up: " + itemData.item.itemName);
 
-        if (inventoryManager == null)
+        if (InventoryManager.instance == null)
         {
             Debug.LogError("No InventoryManager assigned!");
             return;
         }
         
-        inventoryManager.AddItem(itemData.item);
+        InventoryManager.instance.AddItem(itemData.item);
         Destroy(other.gameObject);
 
     } 

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Key : Item
 {
     public string targetDoorId;
-    public override void Use(int slotIndex)
+    public override bool Use(int slotIndex)
     {
         Debug.Log("Using key: " + itemName);
         
@@ -14,19 +14,20 @@ public class Key : Item
         if (nearbyDoor == null)
         {
             Debug.Log("No door nearby to unlock.");
-            return;
+            InventoryManager.instance.descriptionText.text = "No door nearby to unlock.";
+            return false;
         }
 
         if (nearbyDoor.doorId == targetDoorId)
         {
             nearbyDoor.OpenDoor();
             Debug.Log("Unlocked door with key: " + itemName);
-            // InventoryManager.instance.DiscardItem(slotIndex);
-            // InventoryManager.instance.inventoryScreen.SetActive(false);       
+            return true;      
         }
         else
         {
             Debug.Log("Wrong key for this door!");
+            return false;
         }
     }
 }

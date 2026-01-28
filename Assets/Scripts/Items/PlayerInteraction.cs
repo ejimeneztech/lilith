@@ -46,10 +46,12 @@ public class PlayerInteraction : MonoBehaviour
     {
         // Check for door
         Door door = other.GetComponent<Door>();
+        
+
         if (door != null)
         {
             nearbyDoor = door;
-            Debug.Log("Near door: " + door.doorId + " - Press " + interactKey + " to interact");
+            door.ShowPrompt();
             return;
         }
     }
@@ -61,7 +63,8 @@ public class PlayerInteraction : MonoBehaviour
         if (door != null && door == nearbyDoor)
         {
             nearbyDoor = null;
-            Debug.Log("Left door area");
+            door.HidePrompt();
+            return;
         }
     }
 }

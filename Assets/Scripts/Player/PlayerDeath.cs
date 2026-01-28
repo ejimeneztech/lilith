@@ -40,6 +40,7 @@ public class PlayerDeath : MonoBehaviour
 
         
             //Destroy player object
+            InventoryManager.instance.ClearInventory();
             Destroy(gameObject, deathClip.length);
             gameOverUI.SetActive(true);
             
