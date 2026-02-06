@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1771930261314198117}
   - component: {fileID: 8385003314038241373}
   - component: {fileID: 308324590740780939}
-  - component: {fileID: 1693895885087565295}
+  - component: {fileID: 872161949076141246}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -153,7 +153,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &1693895885087565295
+--- !u!114 &872161949076141246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,8 +162,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1404895283690494610}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639ee48741a5041e4a46245855a883b4, type: 3}
+  m_Script: {fileID: 11500000, guid: bffcef77a2a774c3d96ce084ed4dde42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 250
-  maxSpeed: 500
+  enemyName: Zombie
+  damage: 10
+  health: 100
+  speed: 2
+  detectionRange: 25

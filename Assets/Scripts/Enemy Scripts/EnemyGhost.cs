@@ -7,6 +7,8 @@ public class EnemyGhost : MonoBehaviour
     public float minSpeed = 50f;
     public float maxSpeed = 150f;
 
+    public float health = 100f;
+
     
     void Start()
     {
