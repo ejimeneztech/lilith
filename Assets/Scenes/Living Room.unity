@@ -3645,6 +3645,10 @@ PrefabInstance:
       propertyPath: detectionRange
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3431781055781856308, guid: 6d34c4caf7f3a468c84db3cf23d1002a, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4453104096423887087, guid: 6d34c4caf7f3a468c84db3cf23d1002a, type: 3}
       propertyPath: m_Sprite
       value: 
