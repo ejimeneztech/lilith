@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
@@ -15,8 +16,16 @@ public abstract class Enemy : MonoBehaviour
 
     protected Transform player;
 
+    protected Vector2 moveDirection;
+
+    //animation
+    protected Animator animator;
+
     void Start()
     {   //find and cache the player transform
+
+        animator = GetComponent<Animator>();
+
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if(playerObj != null)
         {
@@ -32,7 +41,19 @@ public abstract class Enemy : MonoBehaviour
     void Update()
     {
        
-        Attack();
+        if(player != null)
+    {
+        distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        if(distanceToPlayer < detectionRange)
+        {
+            Chase();
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false); // Only false when NOT chasing
+        }
+    }
+        
         
     }
 
@@ -47,6 +68,16 @@ public abstract class Enemy : MonoBehaviour
    
    public virtual void Chase()
     {
+        //calculate direction to load corresponding animation
+        moveDirection = (player.position - transform.position).normalized;
+
+        //snap direction
+        SnapDirection();
+
+        animator.SetFloat("moveX", moveDirection.x); //map animator parameters
+        animator.SetFloat("moveY",moveDirection.y );
+        animator.SetBool("IsMoving", true);
+        
         //move towards player
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
     }
@@ -56,17 +87,17 @@ public abstract class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public virtual void Attack()
-    {
-         //calculate distance to player
-        if(player != null)
-        {
-            distanceToPlayer = Vector2.Distance(transform.position, player.position);
-            if(distanceToPlayer < detectionRange)
-            {
-                Chase();
-            }
+   
 
+    public virtual void SnapDirection()
+    {
+        if(Mathf.Abs(moveDirection.x) > Mathf.Abs(moveDirection.y))
+        {
+            moveDirection = new Vector2(Mathf.Sign(moveDirection.x), 0);
+        } 
+        else
+        {
+            moveDirection = new Vector2(0, Mathf.Sign(moveDirection.y));
         }
     }
 

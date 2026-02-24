@@ -36,9 +36,6 @@ public class PlayerMove : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
-        //Listen for movement input
-        input.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        input.Player.Move.canceled += ctx => moveInput = Vector2.zero;
     }
 
     void OnEnable()
@@ -54,6 +51,15 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         moveInput = input.Player.Move.ReadValue<Vector2>();
+        
+        //add snapping logic
+        SnapDirection();
+
+         //update animator parameters
+        animator.SetFloat("moveY", moveInput.y);
+        animator.SetFloat("moveX", moveInput.x);    
+        animator.SetBool("IsMoving", moveInput != Vector2.zero);
+        
     }
 
     void FixedUpdate()
@@ -75,9 +81,21 @@ public class PlayerMove : MonoBehaviour
             stepTimer = stepDelay; //reset timer when not moving
         }
 
-        //update animator parameters
-        animator.SetFloat("moveY", moveInput.y);
-        animator.SetFloat("moveX", moveInput.x);    
-        animator.SetBool("IsMoving", moveInput != Vector2.zero);
+       
+    }
+
+    void SnapDirection()
+    {
+        if(moveInput.magnitude > 0)
+        {
+            if(Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
+            {
+                moveInput = new Vector2(Mathf.Sign(moveInput.x), 0);
+            }
+            else
+            {
+                moveInput = new Vector2(0,Mathf.Sign(moveInput.y));
+            }
+        }
     }       
 }
