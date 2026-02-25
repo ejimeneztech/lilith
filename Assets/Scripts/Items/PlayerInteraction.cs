@@ -36,10 +36,19 @@ public class PlayerInteraction : MonoBehaviour
         // If near a door, open inventory to use keys
         if (nearbyDoor != null)
         {
-            Debug.Log("Interacting with door: " + nearbyDoor.doorId);
-            InventoryManager.instance.inventoryScreen.SetActive(true);
-            InventoryManager.instance.isOpen = true;
+            if (nearbyDoor.requiresKey)
+            {
+                Debug.Log("Interacting with door: " + nearbyDoor.doorId);
+                InventoryManager.instance.inventoryScreen.SetActive(true);
+                InventoryManager.instance.isOpen = true;
+            }
+            else
+            {
+                nearbyDoor.OpenDoor();
+            }
+            
         }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -5,6 +5,7 @@ public class PlayerMove : MonoBehaviour
 {
     public float speed = 5f;
     private Rigidbody2D rb;
+
     private InputSystem_Actions input;
 
 
@@ -35,6 +36,7 @@ public class PlayerMove : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; // Prevent rotation when bumping into objects
 
         animator = GetComponent<Animator>();
+        
 
     }
 
@@ -58,7 +60,16 @@ public class PlayerMove : MonoBehaviour
          //update animator parameters
         animator.SetFloat("moveY", moveInput.y);
         animator.SetFloat("moveX", moveInput.x);    
-        animator.SetBool("IsMoving", moveInput != Vector2.zero);
+        if(moveInput != Vector2.zero)
+        {
+            animator.SetBool("IsMoving", true);
+
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
+        
         
     }
 

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -5,7 +6,17 @@ public class Door : MonoBehaviour
     public string doorId;
     public bool isOpen = false;
 
+    public bool requiresKey = true;
+
     public GameObject interactionPromptUI;
+
+    public SpriteRenderer spriteRenderer;
+
+    public Sprite openDoorSprite;
+    public Sprite closedDoorSprite;
+    
+
+    private BoxCollider2D boxCollider2D;
 
     void Start()
     {
@@ -13,6 +24,10 @@ public class Door : MonoBehaviour
         {
             interactionPromptUI.SetActive(false);
         }
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     public void ShowPrompt()
@@ -36,8 +51,37 @@ public class Door : MonoBehaviour
     {
         if (isOpen) return;
         isOpen = true;
-        Debug.Log("Door" + gameObject.name + " is opened.");
-        gameObject.SetActive(false);
+        requiresKey = false;
+        if(openDoorSprite != null)
+        {
+            spriteRenderer.sprite = openDoorSprite;
+            HidePrompt();
+            boxCollider2D.enabled = false;
+            StartCoroutine(CloseDoor(2f));
+        }
+        else
+        {
+            Debug.Log("Missing Open Door Sprite");
+        }
+
+    }
+
+
+    IEnumerator CloseDoor(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        if(closedDoorSprite != null)
+        {
+            spriteRenderer.sprite = closedDoorSprite;
+            boxCollider2D.enabled = true;
+            isOpen = false;
+        }
+        else
+        {
+            Debug.Log("Missing closed door sprite");
+        }
+        
     }
 
     
