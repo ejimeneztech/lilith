@@ -3673,6 +3673,10 @@ PrefabInstance:
       value: Room Door
       objectReference: {fileID: 0}
     - target: {fileID: 5426406285890596036, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
+      propertyPath: delay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426406285890596036, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: openDoorSprite
       value: 
       objectReference: {fileID: 21300000, guid: 736c5f4da67704deabbf963753dd6ab6, type: 3}

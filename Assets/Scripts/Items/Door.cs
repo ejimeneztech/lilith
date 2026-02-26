@@ -8,6 +8,8 @@ public class Door : MonoBehaviour
 
     public bool requiresKey = true;
 
+    private float delay = 2f;
+
     public GameObject interactionPromptUI;
 
     public SpriteRenderer spriteRenderer;
@@ -57,7 +59,7 @@ public class Door : MonoBehaviour
             spriteRenderer.sprite = openDoorSprite;
             HidePrompt();
             boxCollider2D.enabled = false;
-            StartCoroutine(CloseDoor(2f));
+            StartCoroutine(CloseDoor(delay));
         }
         else
         {
