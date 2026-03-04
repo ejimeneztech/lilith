@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -108,5 +109,14 @@ public class PlayerMove : MonoBehaviour
                 moveInput = new Vector2(0,Mathf.Sign(moveInput.y));
             }
         }
-    }       
+    }
+
+   
+
+    public IEnumerator SpeedBoost(float boostAmount, float coolDown)
+    {
+        speed += boostAmount;
+        yield return new WaitForSeconds(coolDown);
+        speed -= boostAmount;
+    }
 }

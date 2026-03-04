@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
+    public Health playerHealth;
     public GameObject bloodParticleEffect;
     public GameObject[] gorePrefabs;
 
@@ -31,6 +32,30 @@ public class PlayerDeath : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            //Damage player health
+            if(playerHealth != null)
+            {
+                playerHealth.TakeDamage(10f);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerHealth component not found on player object.");
+                return;
+            }
+            
+            //Check if player is dead
+            if(playerHealth.currentHealth > 0) return;
+
+            Die();
+
+            
+        }
+    }
+
+
+
+    void Die()
+    {
             isDead = true;
             //Instantiate blood particle effect at player's position
             playerSpriteRenderer.sprite = null;
@@ -69,9 +94,6 @@ public class PlayerDeath : MonoBehaviour
                     goreRb.linearDamping = 3f;
                 }
             }
-
-            
-        }
     }
 
 }

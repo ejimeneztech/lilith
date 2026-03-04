@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f1b084fc25ab42aab0cc8fbab5cb558, type: 3}
-  m_Name: Kitchen Door Key
-  m_EditorClassIdentifier: 
-  itemName: Kitchen Door Key
-  icon: {fileID: 21300000, guid: 641668bb89e7d2642ab3c154d5100540, type: 3}
+  m_Script: {fileID: 11500000, guid: 67bcb65336026460f9bf032d7fa6ed15, type: 3}
+  m_Name: Ammo
+  m_EditorClassIdentifier: Assembly-CSharp::Ammo
+  itemName: Marbles
+  icon: {fileID: 21300000, guid: 16728a064a40d451ea7d35710e0683e0, type: 3}
   maxStack: 1
-  targetDoorId: kitchen
+  count: 0

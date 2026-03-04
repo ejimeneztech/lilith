@@ -13,55 +13,19 @@ public class UIStatus : MonoBehaviour
     public Sprite highSprite;
     public Sprite dangerSprite;
 
-    private EnemySpawner currentSpawner;
 
-    private bool dangerActive = false;
 
     void Awake()
     {
        Instance = this;
     }
 
-    public void SetSpawner(EnemySpawner spawner) // Called by EnemySpawner in StartSpawn
+   
+
+
+   public void UpdateStatusUI(float healthRemaining, float totalHealth)
     {
-        if (currentSpawner != null)
-        {
-            currentSpawner.OnCountdownUpdated -= UpdateStatusUI;
-        }
-
-        currentSpawner = spawner;
-
-        if (currentSpawner != null)
-        {
-            currentSpawner.OnCountdownUpdated += UpdateStatusUI;
-        }
-    }
-
-
-    public void ClearSpawner() // Called by EnemySpawner in StopSpawn
-    {
-        if (currentSpawner != null)
-        {
-            currentSpawner.OnCountdownUpdated -= UpdateStatusUI;
-            currentSpawner = null;
-            statusUI.sprite = normalSprite;
-            dangerActive = false;
-        }
-    }
-
-
-    
-
-    void UpdateStatusUI(float timeRemaining, float totalTime)
-    {
-        float ratio = timeRemaining / totalTime;
-
-        if (dangerActive)
-        {
-            statusUI.sprite = dangerSprite;
-            return;
-
-        }
+        float ratio = healthRemaining / totalHealth;
 
         if (ratio >= 0.8f)
         {
@@ -72,19 +36,16 @@ public class UIStatus : MonoBehaviour
             statusUI.sprite = mediumSprite;
         
         }
-        else if (ratio >= 0.1f)
+        else if (ratio >= 0.3f)
         {
             statusUI.sprite = highSprite;
         }
         else
         {
             statusUI.sprite = dangerSprite;
-            dangerActive = true;
+            
         }
     }
 
-    public void ResetDanger()
-    {
-        dangerActive = false;
-    }
+   
 }

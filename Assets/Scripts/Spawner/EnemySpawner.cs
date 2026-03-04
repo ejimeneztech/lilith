@@ -65,7 +65,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (isSpawning) return;
 
-        UIStatus.Instance.SetSpawner(this); // Set the spawner reference in UIStatus    
+       // UIStatus.Instance.SetSpawner(this); // Set the spawner reference in UIStatus    
         isSpawning = true;
         spawnRoutine = StartCoroutine(SpawnWave());
        
@@ -73,7 +73,7 @@ public class EnemySpawner : MonoBehaviour
     public void StopSpawning()
     {
         if (!isSpawning) return;
-        UIStatus.Instance.ClearSpawner();   // Clear the spawner reference in UIStatus
+        //UIStatus.Instance.ClearSpawner();   // Clear the spawner reference in UIStatus
         isSpawning = false;
 
         if (spawnRoutine != null)
@@ -154,7 +154,7 @@ public class EnemySpawner : MonoBehaviour
         if (enemiesAlive <= 0 && screenColorPrefab != null)
         {
             screenColorPrefab.SetActive(false);
-            UIStatus.Instance.ResetDanger(); // Reset danger state in UIStatus
+            //UIStatus.Instance.ResetDanger(); // Reset danger state in UIStatus
            
         }
     }

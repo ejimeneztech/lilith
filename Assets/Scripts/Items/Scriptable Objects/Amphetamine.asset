@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271b5e08e8d9649ed85b6ac2d7f16d0f, type: 3}
+  m_Name: Amphetamine
+  m_EditorClassIdentifier: Assembly-CSharp::SpeedBooster
+  itemName: Amphetamine
+  icon: {fileID: 21300000, guid: 220d8fa45636f4ee28fbd6dcbda6f63e, type: 3}
+  maxStack: 1
+  playerMovement: {fileID: 6795393672675086181, guid: 7ba420a007e8b4e6484ba67138d6a090, type: 3}
+  boostAmount: 5
+  coolDown: 3
