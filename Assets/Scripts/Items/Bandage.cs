@@ -3,11 +3,18 @@ using UnityEngine;
 [CreateAssetMenu( menuName = "Item/Bandage")]
 public class Bandage : Item
 {
-    public Health playerHealth;
-    public float healAmount = 70f;
+   public float healAmount = 70f;
     public override bool Use(int slotIndex)
     {
-        playerHealth.Heal(healAmount);
-        return true;
+        Health playerHealth = FindFirstObjectByType<Health>();
+
+         if(playerHealth != null)
+        {
+            playerHealth.Heal(healAmount);
+            return true;
+        }
+            Debug.LogWarning("Player Health reference not set in Bandage item.");
+            return false;
+       
     }
 }
