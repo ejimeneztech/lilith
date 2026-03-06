@@ -23,7 +23,6 @@ public class InventoryManager : MonoBehaviour
     private List<Image> inventorySlots = new List<Image>();
     public int selectedSlotIndex = -1;
     public bool isOpen = false;
-
     public static InventoryManager instance;
 
     void Awake()
@@ -165,5 +164,17 @@ public class InventoryManager : MonoBehaviour
         {
             DiscardItem(i);
         }
+    }
+
+
+    public bool IsInventoryFull()
+    { 
+        for(int i =0; i < slotItems.Length; i++)
+        {
+            if (slotItems[i] == null)
+                return false;
+        
+        }
+        return true;
     }
 }

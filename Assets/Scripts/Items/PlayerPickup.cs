@@ -24,9 +24,16 @@ public class PlayerPickup : MonoBehaviour
             Debug.LogError("No InventoryManager assigned!");
             return;
         }
-        
+
+        if (InventoryManager.instance.IsInventoryFull() == true) // Check if inventory is full before adding item
+        {
+            Debug.Log("Inventory is full!");
+            return;
+        }
         InventoryManager.instance.AddItem(itemData.item);
         Destroy(other.gameObject);
 
     } 
+
+
 }

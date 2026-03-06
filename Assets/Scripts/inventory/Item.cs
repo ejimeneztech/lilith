@@ -6,6 +6,8 @@ public abstract class Item : ScriptableObject
     public string itemName;
     public Sprite icon;
 
+    public bool isConsumable = true;
+
     public int maxStack = 1;
     
     public abstract bool Use(int slotIndex);
