@@ -4,7 +4,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public string doorId;
-    public bool isOpen = false;
+    protected bool isOpen = false;
 
     public bool requiresKey = true;
 
@@ -49,7 +49,7 @@ public class Door : MonoBehaviour
         }
     }
     
-    public void OpenDoor()
+    public virtual void OpenDoor()
     {
         if (isOpen) return;
         isOpen = true;

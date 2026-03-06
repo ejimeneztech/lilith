@@ -7,8 +7,23 @@ public class FuseBox : MonoBehaviour
     public Sprite oneFuse;
     public Sprite twoFuses;
 
-    
+    public int fuseCount = 0;
 
+    public BasementDoor basementDoor;
+    public int AddFuse()
+    {
+        fuseCount++;
+        FuseBox fuseBox = FindFirstObjectByType<FuseBox>();
+        if (fuseBox != null)
+        {
+            fuseBox.updateFuseBox(fuseCount);
+            if (basementDoor != null)
+            {
+                basementDoor.OpenDoor(); // Check if the door can be opened after adding a fuse
+            }
+        }
+       return fuseCount;
+    }
     public void updateFuseBox(int fuseCount)
     {
         switch (fuseCount)

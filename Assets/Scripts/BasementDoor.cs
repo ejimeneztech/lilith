@@ -2,19 +2,23 @@ using UnityEngine;
 
 public class BasementDoor : Door
 {
-    public int fuseCount = 0;
+    
+   public FuseBox fuseBox;
 
-    public void AddFuse()
+    public override void OpenDoor()
     {
-        fuseCount++;
-        FuseBox fuseBox = FindFirstObjectByType<FuseBox>();
-        if (fuseBox != null)
+    
+
+        if (fuseBox != null && fuseBox.fuseCount == 2)
         {
-            fuseBox.updateFuseBox(fuseCount);
+            base.OpenDoor();
+            Debug.Log("The door is now open!");
         }
-        if(fuseCount >= 2)
+        else
         {
-            OpenDoor();
+            Debug.Log("The door is locked. You need to insert 2 fuses to open it.");
         }
     }
+    
+    
 }
