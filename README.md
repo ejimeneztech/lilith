@@ -5,7 +5,7 @@ The project focuses on **gameplay systems, clean architecture, and interaction d
 
 This is an active work-in-progress used to demonstrate gameplay programming, system design, and Unity workflows.
 
-![Gameplay Demo](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGsyZmxnN3p6azh4aGN1czdlNWYydzg0ajFydW81bmE3NWwwY2diayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4SeNcASbOG5cnkokjc/giphy.gif)
+![Gameplay Demo](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmR2czUwemV4b3NqZW5iaGIwMzNiZnM2emF3dGlheWZibDNqbHVkZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3MBpi9ZJNheTkm7WsM/giphy.gif)
 
 
 ---
@@ -31,6 +31,8 @@ This is an active work-in-progress used to demonstrate gameplay programming, sys
 ---
 
 ## Gameplay Systems Overview
+
+![Inventory Demo](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHZnZGk5amhwMzdodTY4bTBwazk5ZHNyMGU5ZGw5eXBpMG9qaXR2NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/roVzqtk3loCkVbEd7s/giphy.gif)
 
 ### Inventory System
 - Centralized inventory manager with item slots
