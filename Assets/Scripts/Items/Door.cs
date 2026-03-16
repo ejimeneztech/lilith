@@ -8,7 +8,7 @@ public class Door : MonoBehaviour
 
     public bool requiresKey = true;
 
-    private float delay = 2f;
+    public float delay = 2f;
 
     public GameObject interactionPromptUI;
 
