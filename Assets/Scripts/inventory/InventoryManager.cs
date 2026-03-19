@@ -97,7 +97,7 @@ public class InventoryManager : MonoBehaviour
                 slotItems[i] = item;
                 inventorySlots[i].sprite = item.icon;
                 inventorySlots[i].color = Color.white;
-                Debug.Log($"Placed {item.name} in slot {i}");
+                //Debug.Log($"Placed {item.name} in slot {i}");
                 return;
             }
         }
@@ -131,7 +131,7 @@ public class InventoryManager : MonoBehaviour
         inventorySlots[slotIndex].sprite = emptySlotSprite;
         subMenuPanel.SetActive(false);
         descriptionText.gameObject.SetActive(false);
-        Debug.Log($"Discarded item in slot {slotIndex}");
+        //Debug.Log($"Discarded item in slot {slotIndex}");
     }
 
     public void Close()
@@ -153,7 +153,7 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Description Text is not assigned in InventoryManager.");
+            //Debug.Log("Description Text is not assigned in InventoryManager.");
             descriptionText.gameObject.SetActive(false);
         }
     }

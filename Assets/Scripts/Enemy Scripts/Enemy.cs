@@ -116,31 +116,29 @@ public abstract class Enemy : MonoBehaviour
     {
         if (hasPatrolTarget)
         {
+            patrolTime += Time.deltaTime;
+            
             moveDirection = (patrolTarget - (Vector2)transform.position).normalized;
             
             UpdateMoveAnim();
            
             //move toward target
-            
-            transform.position = Vector2.MoveTowards(transform.position, patrolTarget, speed * Time.deltaTime);
-            
-            //If it collides, go back to idle
-            void OnCollisionEnter2D(Collision2D collision)
-            {
-                Debug.Log("Should go into idle");
-                currentState = EnemyState.Idle;
-            }
 
-            if (Vector2.Distance(transform.position, patrolTarget) <= 0.1f)
+            transform.position = Vector2.MoveTowards(transform.position, patrolTarget, speed * Time.deltaTime);
+
+            if (Vector2.Distance(transform.position, patrolTarget) <= 0.1f || patrolTime >= patrolDuration)
             {
+                patrolTime = 0f;
                 currentState = EnemyState.Idle;
                 hasPatrolTarget = false;
             }
             //transition to idle or chase
             if (distanceToPlayer <= detectionRange)
             {
+                patrolTime = 0f;
                 currentState = EnemyState.Chase;
             }
+            
         }
         
         
@@ -162,7 +160,7 @@ public abstract class Enemy : MonoBehaviour
             currentState = EnemyState.Idle;
         }
     }
-
+   
    
     public virtual void TakeDamage(float damageAmount)
     {
