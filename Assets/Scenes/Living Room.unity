@@ -1451,6 +1451,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5752226655347891544, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16.928955
+      objectReference: {fileID: 0}
+    - target: {fileID: 5752226655347891544, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 32.96692
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135456374876813302, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135456374876813302, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135456374876813302, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135456374876813302, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135456374876813302, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7060562960911793364, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
       propertyPath: addSlots
       value: 3
@@ -1686,7 +1714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5426406285890596036, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: delay
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5426406285890596036, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: doorId
@@ -1782,7 +1810,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2.8125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2673,6 +2701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BasementDoor
   doorId: basement
   requiresKey: 1
+  delay: 4
   interactionPromptUI: {fileID: 1566006779}
   spriteRenderer: {fileID: 413617820}
   openDoorSprite: {fileID: 21300000, guid: 48611afaab344484b80b66c97463310f, type: 3}
@@ -5189,7 +5218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5426406285890596036, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: delay
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5426406285890596036, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: doorId
@@ -5356,8 +5385,12 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2182070866390346077, guid: 6d34c4caf7f3a468c84db3cf23d1002a, type: 3}
+      propertyPath: patrolRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182070866390346077, guid: 6d34c4caf7f3a468c84db3cf23d1002a, type: 3}
       propertyPath: detectionRange
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3431781055781856308, guid: 6d34c4caf7f3a468c84db3cf23d1002a, type: 3}
       propertyPath: m_Constraints
@@ -5534,7 +5567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5426406285890596036, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: delay
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5426406285890596036, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: doorId
@@ -5670,6 +5703,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1061068791100614086, guid: 965b35974875d442aa85ca0a3c8c27da, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061068791100614086, guid: 965b35974875d442aa85ca0a3c8c27da, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061068791100614086, guid: 965b35974875d442aa85ca0a3c8c27da, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061068791100614086, guid: 965b35974875d442aa85ca0a3c8c27da, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 5390101388567071783, guid: 965b35974875d442aa85ca0a3c8c27da, type: 3}
       propertyPath: m_Name
       value: Status Indicator
