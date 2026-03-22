@@ -5426,6 +5426,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 487612021079428901, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
   m_PrefabInstance: {fileID: 401337381}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &2102301889 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2736924673089079451, guid: 7ba420a007e8b4e6484ba67138d6a090, type: 3}
+  m_PrefabInstance: {fileID: 3879723603308197597}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &851380075892453376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5980,6 +5985,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 227240397910646070, guid: 7ba420a007e8b4e6484ba67138d6a090, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 2102301889}
     - target: {fileID: 1005147803754537718, guid: 7ba420a007e8b4e6484ba67138d6a090, type: 3}
       propertyPath: gameOverUI
       value: 

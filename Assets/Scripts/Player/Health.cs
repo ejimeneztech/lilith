@@ -1,9 +1,12 @@
 using UnityEngine;
+using System.Collections;
 
 public class Health : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float currentHealth;
+    
+    public SpriteRenderer spriteRenderer;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,7 +19,15 @@ public class Health : MonoBehaviour
     {
         currentHealth -= damage;
         UIStatus.Instance.UpdateStatusUI(currentHealth, maxHealth);
+        StartCoroutine((DamageFlash()));
         return currentHealth;
+    }
+
+     IEnumerator DamageFlash()
+     { 
+         spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+         spriteRenderer.color = Color.white;
     }
 
     public float Heal(float healAmount)
