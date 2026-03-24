@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName = "Item/Smartphone")]
 public class Smartphone :Item
 {
     public override bool Use(int slotIndex)
     {
-        Debug.Log("Trigger End Scene here");
+        SceneManager.LoadScene("End");
         return true;
     }
 }
