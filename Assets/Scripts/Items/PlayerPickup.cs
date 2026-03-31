@@ -17,7 +17,8 @@ public class PlayerPickup : MonoBehaviour
             return;
         }
 
-        Debug.Log("Picked up: " + itemData.item.itemName);
+        //Debug.Log("Picked up: " + itemData.item.itemName);
+        MessageManager.instance.ShowMessage("Picked up: " + itemData.item.itemName);
 
         if (InventoryManager.instance == null)
         {
@@ -27,7 +28,8 @@ public class PlayerPickup : MonoBehaviour
 
         if (InventoryManager.instance.IsInventoryFull() == true) // Check if inventory is full before adding item
         {
-            Debug.Log("Inventory is full!");
+            //Debug.Log("Inventory is full!");
+            MessageManager.instance.ShowMessage("Inventory is full!");
             return;
         }
         InventoryManager.instance.AddItem(itemData.item);

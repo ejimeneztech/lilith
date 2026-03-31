@@ -101,7 +101,8 @@ public class InventoryManager : MonoBehaviour
                 return;
             }
         }
-        Debug.Log("Inventory Full! Cannot add item: " + item.name);
+        //Debug.Log("Inventory Full! Cannot add item: " + item.name);
+        MessageManager.instance.ShowMessage("Inventory Full! Cannot add item: " + item.name);
     }
 
     public void UseItem(int slotIndex)

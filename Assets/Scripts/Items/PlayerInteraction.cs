@@ -38,6 +38,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (nearbyDoor.requiresKey)
             {
+                MessageManager.instance.ShowMessage("I need to unlock this door somehow...");
                 Debug.Log("Interacting with door: " + nearbyDoor.doorId);
                 InventoryManager.instance.inventoryScreen.SetActive(true);
                 InventoryManager.instance.isOpen = true;

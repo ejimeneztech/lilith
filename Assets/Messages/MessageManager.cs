@@ -13,6 +13,7 @@ public class MessageManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        messageText.gameObject.SetActive(true);
     }
 
     public void ShowMessage(string message)
