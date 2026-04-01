@@ -4,7 +4,9 @@ public class PlayerPickup : MonoBehaviour
 {
 
 
-    //public InventoryManager inventoryManager;
+    [Header("SFX")]
+    public AudioClip pickupSound;
+    private AudioSource audioSource;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("PickUp"))
@@ -19,6 +21,8 @@ public class PlayerPickup : MonoBehaviour
 
         //Debug.Log("Picked up: " + itemData.item.itemName);
         MessageManager.instance.ShowMessage("Picked up: " + itemData.item.itemName);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(pickupSound);
 
         if (InventoryManager.instance == null)
         {

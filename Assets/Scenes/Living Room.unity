@@ -302,11 +302,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: fdba64931456a4ae3a1a4b419d90c5a0, type: 2}
---- !u!212 &212584984 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1924376163510577721, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
-  m_PrefabInstance: {fileID: 933413270424517008}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &252946528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,6 +1582,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7060562960911793364, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bdb08458eee8f714d87101d84fb4b99b, type: 3}
+    - target: {fileID: 7060562960911793364, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      propertyPath: selectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e5745afffbcd0e4aaa8fce19523a3d2, type: 3}
+    - target: {fileID: 7060562960911793364, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 341169647}
@@ -1596,7 +1599,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 487612021079428901, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
       insertIndex: -1
       addedObject: {fileID: 341169646}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4684865245446020593, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2088474465}
   m_SourcePrefab: {fileID: 100100000, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
 --- !u!212 &413617820 stripped
 SpriteRenderer:
@@ -3181,6 +3187,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 413617820}
   openDoorSprite: {fileID: 21300000, guid: 48611afaab344484b80b66c97463310f, type: 3}
   closedDoorSprite: {fileID: 21300000, guid: d52169ca1c5a843e1affd88aa4581e80, type: 3}
+  openDoorSound: {fileID: 0}
+  closeDoorSound: {fileID: 0}
   fuseBox: {fileID: 1286329476}
 --- !u!1001 &1379481662
 PrefabInstance:
@@ -3781,6 +3789,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1668814100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4684865245446020593, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+  m_PrefabInstance: {fileID: 401337381}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1674264900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6306,6 +6319,103 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 487612021079428901, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
   m_PrefabInstance: {fileID: 401337381}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &2088474465
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668814100}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2095862615
 GameObject:
   m_ObjectHideFlags: 0
@@ -6528,30 +6638,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 20681442197593275, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
-      propertyPath: isOpen
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20681442197593275, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
-      propertyPath: requiresKey
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20681442197593275, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
-      propertyPath: openDoorSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 736c5f4da67704deabbf963753dd6ab6, type: 3}
-    - target: {fileID: 20681442197593275, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
-      propertyPath: spriteRenderer
-      value: 
-      objectReference: {fileID: 212584984}
-    - target: {fileID: 20681442197593275, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
-      propertyPath: closedDoorSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 22fbf7cced815bc46a2ab51e19ac663a, type: 3}
-    - target: {fileID: 6759568469685450981, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2787501
-      objectReference: {fileID: 0}
     - target: {fileID: 6759568469685450981, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.48
@@ -7022,13 +7108,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227240397910646070, guid: 7ba420a007e8b4e6484ba67138d6a090, type: 3}
+      propertyPath: healSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6fede028ba58b48d08e05b2bff883359, type: 3}
+    - target: {fileID: 227240397910646070, guid: 7ba420a007e8b4e6484ba67138d6a090, type: 3}
       propertyPath: spriteRenderer
       value: 
       objectReference: {fileID: 2102301889}
+    - target: {fileID: 511999040811462020, guid: 7ba420a007e8b4e6484ba67138d6a090, type: 3}
+      propertyPath: lockedDoorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d18ea37688b6fa4699e27570b896b52, type: 3}
     - target: {fileID: 1005147803754537718, guid: 7ba420a007e8b4e6484ba67138d6a090, type: 3}
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 1630232291}
+    - target: {fileID: 6795393672675086181, guid: 7ba420a007e8b4e6484ba67138d6a090, type: 3}
+      propertyPath: boostSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 4bc21899eae7448ccaf4ebdd49cfcd9f, type: 3}
     - target: {fileID: 6848164489487046199, guid: 7ba420a007e8b4e6484ba67138d6a090, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7073,6 +7171,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8361495271701707203, guid: 7ba420a007e8b4e6484ba67138d6a090, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

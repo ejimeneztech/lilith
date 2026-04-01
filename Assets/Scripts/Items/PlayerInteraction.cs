@@ -10,10 +10,14 @@ public class PlayerInteraction : MonoBehaviour
     
     private Door nearbyDoor;
 
+    public AudioClip lockedDoorSound;
+    private AudioSource doorAudioSource;
+
 
     void Awake()
     {
         instance = this;
+        doorAudioSource = GetComponent<AudioSource>();
     }
 
     // Simple getter so Key can check which door we're near
@@ -38,6 +42,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (nearbyDoor.requiresKey)
             {
+                doorAudioSource.PlayOneShot(lockedDoorSound);
                 MessageManager.instance.ShowMessage("I need to unlock this door somehow...");
                 Debug.Log("Interacting with door: " + nearbyDoor.doorId);
                 InventoryManager.instance.inventoryScreen.SetActive(true);

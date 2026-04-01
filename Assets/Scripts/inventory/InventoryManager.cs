@@ -24,6 +24,11 @@ public class InventoryManager : MonoBehaviour
     public int selectedSlotIndex = -1;
     public bool isOpen = false;
     public static InventoryManager instance;
+    
+    [Header("SFX")]
+    public AudioClip openSound;
+    public AudioClip selectSound;
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -36,6 +41,8 @@ public class InventoryManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -79,6 +86,7 @@ public class InventoryManager : MonoBehaviour
         {
             isOpen = !isOpen;
             inventoryScreen.SetActive(isOpen);
+            audioSource.PlayOneShot(openSound);
         }
         // Close submenu if inventory is closed
         if (!isOpen && subMenuPanel.activeSelf)
@@ -151,6 +159,7 @@ public class InventoryManager : MonoBehaviour
         {
             descriptionText.gameObject.SetActive(true);
             descriptionText.text = slotItems[slotIndex].itemName;
+            audioSource.PlayOneShot(selectSound);
         }
         else
         {

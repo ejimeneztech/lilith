@@ -8,11 +8,16 @@ public class Health : MonoBehaviour
     
     public SpriteRenderer spriteRenderer;
 
+    [Header("SFX")] 
+    public AudioClip healSound;
+    private AudioSource audioSource;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = maxHealth;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public float TakeDamage(float damage)
@@ -33,6 +38,7 @@ public class Health : MonoBehaviour
     public float Heal(float healAmount)
     {
         currentHealth += healAmount;
+        audioSource.PlayOneShot(healSound);
         UIStatus.Instance.UpdateStatusUI(currentHealth, maxHealth);
         if(currentHealth > maxHealth)
         {

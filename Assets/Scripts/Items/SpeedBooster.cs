@@ -8,6 +8,7 @@ public class SpeedBooster : Item
 
     
     private Coroutine speedBoostCoroutine;
+    
     public override bool Use(int slotIndex)
     {
         PlayerMove playerMovement = FindFirstObjectByType<PlayerMove>();

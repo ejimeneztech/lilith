@@ -19,9 +19,17 @@ public class Door : MonoBehaviour
     
 
     private BoxCollider2D boxCollider2D;
+    
+    //sfx
+    public AudioClip openDoorSound;
+    public AudioClip closeDoorSound;
+
+    private AudioSource doorAudioSource;
 
     void Start()
     {
+        doorAudioSource = GetComponent<AudioSource>();
+            
         if (interactionPromptUI != null)
         {
             interactionPromptUI.SetActive(false);
@@ -59,6 +67,12 @@ public class Door : MonoBehaviour
             spriteRenderer.sprite = openDoorSprite;
             HidePrompt();
             boxCollider2D.enabled = false;
+            
+            if (openDoorSound != null)
+            {
+                doorAudioSource.PlayOneShot(openDoorSound);
+            }
+                
             StartCoroutine(CloseDoor(delay));
         }
         else
@@ -78,6 +92,11 @@ public class Door : MonoBehaviour
             spriteRenderer.sprite = closedDoorSprite;
             boxCollider2D.enabled = true;
             isOpen = false;
+            if (closeDoorSound != null)
+            {
+                doorAudioSource.PlayOneShot(closeDoorSound);
+            }
+            
         }
         else
         {

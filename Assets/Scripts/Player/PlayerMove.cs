@@ -22,6 +22,10 @@ public class PlayerMove : MonoBehaviour
 
     private float stepTimer = 0f;
     public float stepDelay = 0.4f; // time between footsteps
+    
+    //Boost SFX
+    public AudioClip boostSFX;
+    private AudioSource audiosource;
 
 
 
@@ -37,6 +41,7 @@ public class PlayerMove : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; // Prevent rotation when bumping into objects
 
         animator = GetComponent<Animator>();
+        audiosource = GetComponent<AudioSource>();
         
 
     }
@@ -115,6 +120,7 @@ public class PlayerMove : MonoBehaviour
 
     public IEnumerator SpeedBoost(float boostAmount, float coolDown)
     {
+        audiosource.PlayOneShot(boostSFX);
         speed += boostAmount;
         yield return new WaitForSeconds(coolDown);
         speed -= boostAmount;
