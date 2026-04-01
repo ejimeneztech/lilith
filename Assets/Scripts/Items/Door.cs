@@ -4,7 +4,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public string doorId;
-    protected bool isOpen = false;
+    public bool isOpen = false;
 
     public bool requiresKey = true;
 
@@ -19,6 +19,7 @@ public class Door : MonoBehaviour
     
 
     private BoxCollider2D boxCollider2D;
+    public BoxCollider2D triggercollider;
     
     //sfx
     public AudioClip openDoorSound;
@@ -59,13 +60,18 @@ public class Door : MonoBehaviour
     
     public virtual void OpenDoor()
     {
-        if (isOpen) return;
+        //if (isOpen) return;
+        if (isOpen)
+        {
+           CloseDoor();
+           return;
+        }
         isOpen = true;
         requiresKey = false;
         if(openDoorSprite != null)
         {
             spriteRenderer.sprite = openDoorSprite;
-            HidePrompt();
+            //HidePrompt();
             boxCollider2D.enabled = false;
             
             if (openDoorSound != null)
@@ -73,7 +79,7 @@ public class Door : MonoBehaviour
                 doorAudioSource.PlayOneShot(openDoorSound);
             }
                 
-            StartCoroutine(CloseDoor(delay));
+            //StartCoroutine(CloseDoor(delay));
         }
         else
         {
@@ -82,11 +88,8 @@ public class Door : MonoBehaviour
 
     }
 
-
-    IEnumerator CloseDoor(float time)
+    public virtual void CloseDoor()
     {
-        yield return new WaitForSeconds(time);
-
         if(closedDoorSprite != null)
         {
             spriteRenderer.sprite = closedDoorSprite;
@@ -102,8 +105,5 @@ public class Door : MonoBehaviour
         {
             Debug.Log("Missing closed door sprite");
         }
-        
     }
-
-    
 }

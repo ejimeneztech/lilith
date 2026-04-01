@@ -40,7 +40,11 @@ public class PlayerInteraction : MonoBehaviour
         // If near a door, open inventory to use keys
         if (nearbyDoor != null)
         {
-            if (nearbyDoor.requiresKey)
+            if (nearbyDoor.isOpen)
+            {
+                nearbyDoor.OpenDoor();
+            }
+            else if (nearbyDoor.requiresKey)
             {
                 doorAudioSource.PlayOneShot(lockedDoorSound);
                 MessageManager.instance.ShowMessage("I need to unlock this door somehow...");
