@@ -1771,7 +1771,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1642056675367962778, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.585
+      value: 0.63618743
       objectReference: {fileID: 0}
     - target: {fileID: 1642056675367962778, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1779,7 +1779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1642056675367962778, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.48
+      value: 2.4749
       objectReference: {fileID: 0}
     - target: {fileID: 1642056675367962778, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3701,6 +3701,135 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1124823656300667563, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
   m_PrefabInstance: {fileID: 1674264900}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1612515780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1612515782}
+  - component: {fileID: 1612515781}
+  m_Layer: 0
+  m_Name: BGMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1612515781
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612515780}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 2f8a8957cc52b074da8451e262024cca, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1612515782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612515780}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.59566, y: 1.41964, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1630232291 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8121692277423904606, guid: 6885ec1eb3dd2423ea99d25350594f69, type: 3}
@@ -4060,6 +4189,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7196233111507461229, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7254175895553069195, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
       propertyPath: m_Name
       value: Closet Door
@@ -4335,7 +4468,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "WASD - Move\n   I - Open/Close Inventory\n   E - Interact with doors/objects\n  
-    ESC - Pause Menu"
+    ESC - Pause Menu\n\nAfter opening a door, you can close it by walking up to it
+    and pressing E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6381,7 +6515,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1642056675367962778, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4876094
+      value: 1.7293459
       objectReference: {fileID: 0}
     - target: {fileID: 1642056675367962778, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: m_LocalScale.y
@@ -6393,7 +6527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1642056675367962778, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.76
+      value: 5.62
       objectReference: {fileID: 0}
     - target: {fileID: 1642056675367962778, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6459,6 +6593,10 @@ PrefabInstance:
       propertyPath: closedDoorSprite
       value: 
       objectReference: {fileID: 21300000, guid: 22fbf7cced815bc46a2ab51e19ac663a, type: 3}
+    - target: {fileID: 6143858010632805109, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6798,12 +6936,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6759568469685450981, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1637263
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759568469685450981, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.48
       objectReference: {fileID: 0}
     - target: {fileID: 6759568469685450981, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1379
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: 6759568469685450981, guid: 2c427981523a0484e9d8fb03f4c648c3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7554,3 +7696,4 @@ SceneRoots:
   - {fileID: 2012471865}
   - {fileID: 252946530}
   - {fileID: 1237005665}
+  - {fileID: 1612515782}

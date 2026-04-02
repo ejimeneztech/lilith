@@ -1,14 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour, IInteractable
 {
     public string doorId;
     public bool isOpen = false;
 
     public bool requiresKey = true;
 
-    public float delay = 2f;
+    //public float delay = 2f;
 
     public GameObject interactionPromptUI;
 
@@ -41,6 +41,32 @@ public class Door : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
+    public void Interact()
+    {
+        //if door is open close it
+        if (isOpen)
+        {
+            CloseDoor();
+            return;
+        }
+        
+        //Check if door is locked
+        if (requiresKey)
+        {
+            PlayerInteraction.instance.PlayLockedSound();
+            MessageManager.instance.ShowMessage("Door is Locked.");
+            InventoryManager.instance.inventoryScreen.SetActive(true);
+            InventoryManager.instance.isOpen = true;
+
+        }
+        else
+        {
+            OpenDoor();
+        }
+    }
+
+    
+    
     public void ShowPrompt()
     {
         if (interactionPromptUI != null)
@@ -60,50 +86,47 @@ public class Door : MonoBehaviour
     
     public virtual void OpenDoor()
     {
-        //if (isOpen) return;
-        if (isOpen)
-        {
-           CloseDoor();
-           return;
-        }
-        isOpen = true;
-        requiresKey = false;
-        if(openDoorSprite != null)
-        {
-            spriteRenderer.sprite = openDoorSprite;
-            //HidePrompt();
-            boxCollider2D.enabled = false;
-            
-            if (openDoorSound != null)
-            {
-                doorAudioSource.PlayOneShot(openDoorSound);
-            }
-                
-            //StartCoroutine(CloseDoor(delay));
-        }
-        else
-        {
-            Debug.Log("Missing Open Door Sprite");
-        }
+       isOpen = true;
+       requiresKey = false; 
+
+       if (openDoorSprite != null)
+       {
+           spriteRenderer.sprite = openDoorSprite;
+           boxCollider2D.enabled = false;
+           HidePrompt();
+
+           if (openDoorSound != null)
+           {
+               doorAudioSource.PlayOneShot(openDoorSound);
+           }
+       }
+       else
+       {
+           Debug.Log("Missing Open Door Sprite");
+       }
+       
+       
 
     }
 
     public virtual void CloseDoor()
     {
-        if(closedDoorSprite != null)
+        isOpen = false;
+
+        if (closedDoorSprite != null)
         {
             spriteRenderer.sprite = closedDoorSprite;
             boxCollider2D.enabled = true;
-            isOpen = false;
+            ShowPrompt();
             if (closeDoorSound != null)
             {
                 doorAudioSource.PlayOneShot(closeDoorSound);
             }
-            
         }
         else
         {
-            Debug.Log("Missing closed door sprite");
+            Debug.Log("Missing Closed Door Sprite");
         }
+        
     }
 }

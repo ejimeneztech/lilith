@@ -8,6 +8,7 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Interaction Settings")]
     public UnityEngine.InputSystem.Key interactKey = UnityEngine.InputSystem.Key.E;
     
+    private IInteractable nearbyInteractable;
     private Door nearbyDoor;
 
     public AudioClip lockedDoorSound;
@@ -26,6 +27,15 @@ public class PlayerInteraction : MonoBehaviour
         return nearbyDoor;
     }
 
+
+    public void PlayLockedSound()
+    {
+        if (lockedDoorSound != null)
+        {
+            doorAudioSource.PlayOneShot(lockedDoorSound);
+        }
+        
+    }
     void Update()
     {
         // Check for interact key press
@@ -37,53 +47,41 @@ public class PlayerInteraction : MonoBehaviour
 
     private void TryInteract()
     {
-        // If near a door, open inventory to use keys
-        if (nearbyDoor != null)
+        if (nearbyInteractable != null)
         {
-            if (nearbyDoor.isOpen)
-            {
-                nearbyDoor.OpenDoor();
-            }
-            else if (nearbyDoor.requiresKey)
-            {
-                doorAudioSource.PlayOneShot(lockedDoorSound);
-                MessageManager.instance.ShowMessage("I need to unlock this door somehow...");
-                Debug.Log("Interacting with door: " + nearbyDoor.doorId);
-                InventoryManager.instance.inventoryScreen.SetActive(true);
-                InventoryManager.instance.isOpen = true;
-            }
-            else
-            {
-                nearbyDoor.OpenDoor();
-            }
-            
+            nearbyInteractable.Interact();
         }
         
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check for door
-        Door door = other.GetComponent<Door>();
-        
-
-        if (door != null)
+        IInteractable interactable = other.GetComponent<IInteractable>();
+        if (interactable != null)
         {
-            nearbyDoor = door;
-            door.ShowPrompt();
-            return;
+            nearbyInteractable = interactable;
+            interactable.ShowPrompt();
+
+
+            Door door = other.GetComponent<Door>();
+            if (door != null)
+            {
+                nearbyDoor = door;
+            }
         }
+        
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        // Clear door reference
-        Door door = other.GetComponent<Door>();
-        if (door != null && door == nearbyDoor)
+        IInteractable interactable = other.GetComponent<IInteractable>();
+
+        if (interactable != null && interactable == nearbyInteractable)
         {
+            nearbyInteractable.HidePrompt();
+            nearbyInteractable = null;
             nearbyDoor = null;
-            door.HidePrompt();
-            return;
         }
     }
 }
