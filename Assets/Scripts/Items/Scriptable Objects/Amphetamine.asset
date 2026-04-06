@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Amphetamine
   m_EditorClassIdentifier: Assembly-CSharp::SpeedBooster
   itemName: Amphetamine
-  icon: {fileID: 21300000, guid: 220d8fa45636f4ee28fbd6dcbda6f63e, type: 3}
+  icon: {fileID: 21300000, guid: c83e776fb48e84a52bd3adc4a8d482f9, type: 3}
+  isConsumable: 1
   maxStack: 1
-  playerMovement: {fileID: 6795393672675086181, guid: 7ba420a007e8b4e6484ba67138d6a090, type: 3}
   boostAmount: 5
   coolDown: 3

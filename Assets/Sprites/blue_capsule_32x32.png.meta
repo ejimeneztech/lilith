@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 736c5f4da67704deabbf963753dd6ab6
+guid: c83e776fb48e84a52bd3adc4a8d482f9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 224569987110606207
-    second: doorOpen2_0
+      213: -8587451891496386065
+    second: blue_capsule_32x32_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: doorOpen2_0
+      name: blue_capsule_32x32_0
       rect:
         serializedVersion: 2
-        x: 14
+        x: 0
         y: 6
-        width: 35
-        height: 56
+        width: 32
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f7511f4a635dd1300800000000000000
-      internalID: 224569987110606207
+      spriteID: fe10a91c00e33d880800000000000000
+      internalID: -8587451891496386065
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      doorOpen2_0: 224569987110606207
+      blue_capsule_32x32_0: -8587451891496386065
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

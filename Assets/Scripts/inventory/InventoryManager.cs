@@ -14,6 +14,7 @@ public class InventoryManager : MonoBehaviour
     [Header("UI")]
     public GameObject inventoryScreen;
     public GameObject subMenuPanel;
+    public GameObject statusUI;
 
     public TextMeshProUGUI descriptionText;
 
@@ -51,6 +52,7 @@ public class InventoryManager : MonoBehaviour
         inventorySlots = new List<Image>();
         inventoryScreen.SetActive(isOpen);
         subMenuPanel.SetActive(false);
+        statusUI.SetActive(false);
         descriptionText.gameObject.SetActive(false);
         
 
@@ -86,6 +88,7 @@ public class InventoryManager : MonoBehaviour
         {
             isOpen = !isOpen;
             inventoryScreen.SetActive(isOpen);
+            statusUI.SetActive(isOpen);
             audioSource.PlayOneShot(openSound);
         }
         // Close submenu if inventory is closed

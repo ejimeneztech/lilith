@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 220d8fa45636f4ee28fbd6dcbda6f63e
+guid: ad0bb5087546641298d8cd57232fa77d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8220062409737215930
-    second: Amphetamine_0
+      213: 1382691214443610764
+    second: door_open_32x32_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Amphetamine_0
+      name: door_open_32x32_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 5
-        width: 13
-        height: 23
+        x: 5
+        y: 0
+        width: 22
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 64062144ac87ced80800000000000000
-      internalID: -8220062409737215930
+      spriteID: c8207fe655e403310800000000000000
+      internalID: 1382691214443610764
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Amphetamine_0: -8220062409737215930
+      door_open_32x32_0: 1382691214443610764
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

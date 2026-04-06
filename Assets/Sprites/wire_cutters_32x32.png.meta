@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ac0847fa71982433d8d60a790bfbe3ff
+guid: da6fff01769cc433c8580542ea01860b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1889537702765113337
-    second: Fuse_0
+      213: 7227701397770153547
+    second: wire_cutters_32x32_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fuse_0
+      name: wire_cutters_32x32_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 6
-        width: 11
-        height: 18
+        x: 2
+        y: 3
+        width: 27
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ffa50b878cf83a10800000000000000
-      internalID: 1889537702765113337
+      spriteID: b4e2fa49024fd4460800000000000000
+      internalID: 7227701397770153547
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fuse_0: 1889537702765113337
+      wire_cutters_32x32_0: 7227701397770153547
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
