@@ -13,16 +13,18 @@ public class InventoryManager : MonoBehaviour
 
     [Header("UI")]
     public GameObject inventoryScreen;
-    public GameObject subMenuPanel;
     public GameObject statusUI;
 
     public TextMeshProUGUI descriptionText;
+    
+    private Color normalColor = Color.white;
+    private Color highlightColor = Color.yellow;
+    private Image currentSlot;
 
     [Header("Items")]
     public Item[] slotItems; // logical storage
 
     private List<Image> inventorySlots = new List<Image>();
-    public int selectedSlotIndex = -1;
     public bool isOpen = false;
     public static InventoryManager instance;
     
@@ -51,7 +53,6 @@ public class InventoryManager : MonoBehaviour
         slotItems = new Item[addSlots];
         inventorySlots = new List<Image>();
         inventoryScreen.SetActive(isOpen);
-        subMenuPanel.SetActive(false);
         statusUI.SetActive(false);
         descriptionText.gameObject.SetActive(false);
         
@@ -69,17 +70,10 @@ public class InventoryManager : MonoBehaviour
             Button slotButton = newSlot.GetComponent<Button>();
             if (slotButton != null)
             {
-                slotButton.onClick.AddListener(() => OnSlotClicked(capturedIndex));
+                slotButton.onClick.AddListener(() => UseItem(capturedIndex));
             }
         }
-
-        // Submenu buttons
-        subMenuPanel.transform.Find("Use").GetComponent<Button>()
-            .onClick.AddListener(() => UseItem(selectedSlotIndex));
-        subMenuPanel.transform.Find("Discard").GetComponent<Button>()
-            .onClick.AddListener(() => DiscardItem(selectedSlotIndex));
-        subMenuPanel.transform.Find("Close").GetComponent<Button>()
-            .onClick.AddListener(() => Close());
+        
     }
 
     void Update()
@@ -90,12 +84,6 @@ public class InventoryManager : MonoBehaviour
             inventoryScreen.SetActive(isOpen);
             statusUI.SetActive(isOpen);
             audioSource.PlayOneShot(openSound);
-        }
-        // Close submenu if inventory is closed
-        if (!isOpen && subMenuPanel.activeSelf)
-        {
-            subMenuPanel.SetActive(false);
-            descriptionText.gameObject.SetActive(false);
         }
     }
 
@@ -129,6 +117,7 @@ public class InventoryManager : MonoBehaviour
         {
             DiscardItem(slotIndex);
             inventoryScreen.SetActive(false);
+            statusUI.SetActive(false);
             isOpen = false;
         }
         
@@ -141,23 +130,18 @@ public class InventoryManager : MonoBehaviour
 
         slotItems[slotIndex] = null;
         inventorySlots[slotIndex].sprite = emptySlotSprite;
-        subMenuPanel.SetActive(false);
         descriptionText.gameObject.SetActive(false);
         //Debug.Log($"Discarded item in slot {slotIndex}");
     }
 
     public void Close()
     {
-        subMenuPanel.SetActive(false);
         descriptionText.gameObject.SetActive(false);
     }
     
 
     public void OnSlotClicked(int slotIndex)
-    {
-        selectedSlotIndex = slotIndex;
-        subMenuPanel.SetActive(true);
-
+    { 
         if(slotItems[slotIndex] != null)
         {
             descriptionText.gameObject.SetActive(true);

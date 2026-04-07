@@ -1545,17 +1545,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3679749361914126875, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4684865245446020593, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
       propertyPath: m_Name
       value: Inventory Manager
       objectReference: {fileID: 0}
     - target: {fileID: 5752226655347891544, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5752226655347891544, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5752226655347891544, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -16.928955
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5752226655347891544, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 32.96692
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6135456374876813302, guid: f3c2cb3dc139f430b810434736c4b961, type: 3}
       propertyPath: m_UiScaleMode
@@ -7388,6 +7400,10 @@ PrefabInstance:
     - target: {fileID: 6221253741630121659, guid: 965b35974875d442aa85ca0a3c8c27da, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6526784251134100127, guid: 965b35974875d442aa85ca0a3c8c27da, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 8630648450131314326, guid: 965b35974875d442aa85ca0a3c8c27da, type: 3}
       propertyPath: m_Pivot.x
