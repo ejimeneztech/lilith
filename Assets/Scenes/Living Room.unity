@@ -6723,7 +6723,7 @@ PrefabInstance:
     - target: {fileID: 5426406285890596036, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: openDoorSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 736c5f4da67704deabbf963753dd6ab6, type: 3}
+      objectReference: {fileID: 21300000, guid: ad0bb5087546641298d8cd57232fa77d, type: 3}
     - target: {fileID: 5426406285890596036, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: spriteRenderer
       value: 
@@ -6731,7 +6731,7 @@ PrefabInstance:
     - target: {fileID: 5426406285890596036, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: closedDoorSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 22fbf7cced815bc46a2ab51e19ac663a, type: 3}
+      objectReference: {fileID: 21300000, guid: fa50f3de627824b3683e84d6a943464f, type: 3}
     - target: {fileID: 6143858010632805109, guid: 2a5cb98a07d6842f0b7f571df73a1fc5, type: 3}
       propertyPath: m_Size.x
       value: 0.71107095
